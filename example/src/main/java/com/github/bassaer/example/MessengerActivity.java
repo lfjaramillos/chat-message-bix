@@ -149,9 +149,10 @@ public class MessengerActivity extends Activity {
             public void onIconLongClick(Message message) {
                 Toast.makeText(
                         MessengerActivity.this,
-                        "Long click : icon " + message.getUser().getName(),
+                        "Removed this message \n" + message.getText(),
                         Toast.LENGTH_SHORT
                 ).show();
+                mChatView.getMessageView().remove(message);
             }
         });
 
@@ -335,7 +336,7 @@ public class MessengerActivity extends Activity {
         super.onPause();
         //Save message
         mMessageList = new MessageList();
-        mMessageList.setMessages(mChatView.getMessageView().getMessageList());
+        mMessageList.setSortableMessages(mChatView.getMessageView().getMessageList());
         AppData.putMessageList(this, mMessageList);
     }
 

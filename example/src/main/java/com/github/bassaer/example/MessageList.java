@@ -35,7 +35,12 @@ public class MessageList {
         return messages;
     }
 
-    public void setMessages(List<SortableMessage> messages) {
+    public void setMessages(List<Message> messages) {
+        for (Message message : messages) {
+            mMessages.add(convertMessage(message));
+        }
+    }
+    public void setSortableMessages(List<SortableMessage> messages) {
         for (SortableMessage message : messages) {
             mMessages.add(convertMessage(message));
         }
@@ -60,34 +65,46 @@ public class MessageList {
     public int size() {
         return mMessages.size();
     }
-
     private SaveMessage convertMessage(SortableMessage sortableMessage) {
         if (sortableMessage instanceof ChatActivityMessage) {
             return new SaveMessage(sortableMessage.getSendTime());
         } else if (sortableMessage instanceof Message) {
-
             Message message = (Message) sortableMessage;
-
             SaveMessage saveMessage = new SaveMessage(
                     Integer.valueOf(message.getUser().getId()),
                     message.getUser().getName(),
                     message.getText(),
                     message.getSendTime(),
                     message.isRight());
-
             saveMessage.setType(message.getType());
-
             if (message.getType() == Message.Type.PICTURE
                     && message.getPicture() != null) {
                 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
                 message.getPicture().compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
                 saveMessage.setPictureString(Base64.encodeToString(outputStream.toByteArray(), Base64.DEFAULT));
             }
-
             return saveMessage;
         }
-
         return null;
+    }
+    private SaveMessage convertMessage(Message message) {
+        SaveMessage saveMessage = new SaveMessage(
+                Integer.valueOf(message.getUser().getId()),
+                message.getUser().getName(),
+                message.getText(),
+                message.getSendTime(),
+                message.isRight());
+
+        saveMessage.setType(message.getType());
+
+        if (message.getType() == Message.Type.PICTURE
+                && message.getPicture() != null) {
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            message.getPicture().compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+            saveMessage.setPictureString(Base64.encodeToString(outputStream.toByteArray(), Base64.DEFAULT));
+        }
+
+        return saveMessage;
     }
 
     private Message convertMessage(SaveMessage saveMessage) {

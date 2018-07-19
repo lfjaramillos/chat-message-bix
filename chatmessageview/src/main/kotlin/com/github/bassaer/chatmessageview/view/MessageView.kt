@@ -10,7 +10,7 @@ import com.github.bassaer.chatmessageview.model.ChatActivityMessage
 import com.github.bassaer.chatmessageview.model.Message
 import com.github.bassaer.chatmessageview.model.SortableMessage
 import com.github.bassaer.chatmessageview.models.Attribute
-import com.github.bassaer.chatmessageview.util.MessageDateComparator
+import com.github.bassaer.chatmessageview.util.SortableMessageDateComparator
 import com.github.bassaer.chatmessageview.util.TimeUtils
 import java.util.*
 import kotlin.collections.ArrayList
@@ -190,7 +190,7 @@ class MessageView : ListView, View.OnFocusChangeListener {
      * Sort messages
      */
     private fun sortMessages(list: List<SortableMessage>?) {
-        val dateComparator = MessageDateComparator()
+        val dateComparator = SortableMessageDateComparator()
         if (list != null) {
             Collections.sort(list, dateComparator)
         }
