@@ -40,7 +40,7 @@ class MessageAdapter(context: Context, resource: Int, private val objects: List<
     private var dateLabelColor = ContextCompat.getColor(getContext(), R.color.blueGray500)
     private var activityMessageTextColor = ContextCompat.getColor(getContext(), R.color.blueGray500)
     private var rightMessageTextColor = Color.WHITE
-    private var leftMessageTextColor = Color.BLACK
+    private var leftMessageTextColor = Color.WHITE
     private var leftBubbleColor: Int = 0
     private var rightBubbleColor: Int = 0
     private var statusColor = ContextCompat.getColor(getContext(), R.color.blueGray500)
