@@ -50,8 +50,21 @@ public class SimpleChatActivity extends Activity implements Message.OnLoadEarlie
                     .build();
             Message message2 = new Message.Builder()
                     .setUser(you)
-                    .setText(you.getName() + " " + i)
+                    .setText(you.getName() + " dsfsfsf df sf sd fs sdfs sdf sfs" + i)
                     .setRight(false)
+                    .build();
+            messages.add(message1);
+            message1 = new Message.Builder()
+                    .setUser(me)
+                    .setText(me.getName() + " " + i +1 )
+                    .setRight(true)
+                    .build();
+            messages.add(message1);
+
+            message1 = new Message.Builder()
+                    .setUser(me)
+                    .setText(me.getName() + " " + i +1 )
+                    .setRight(true)
                     .build();
             messages.add(message1);
             messages.add(message2);

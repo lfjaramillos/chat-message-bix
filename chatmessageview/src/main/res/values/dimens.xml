@@ -28,7 +28,7 @@
 
     <!-- Radius -->
     <dimen name="view_radius_normal">16dp</dimen>
-
+    <dimen name="width_large">220dp</dimen>
 
 
 </resources>
