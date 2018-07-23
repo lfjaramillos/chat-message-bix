@@ -11,6 +11,7 @@
 
     <color name="green500">#4CAF50</color>
     <color name="blueChat">#4A90E2</color>
+    <color name="greenChat">#31C4AE</color>
 
 
 
@@ -25,6 +26,5 @@
 
     <!-- Bubble color -->
     <color name="default_left_bubble_color">@color/blueChat</color>
-
-    <color name="default_right_bubble_color">@color/green500</color>
+    <color name="default_right_bubble_color">@color/greenChat</color>
 </resources>
