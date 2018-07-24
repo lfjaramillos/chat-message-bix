@@ -191,8 +191,27 @@ class MessageView : ListView, View.OnFocusChangeListener {
      */
     private fun sortMessages(list: List<SortableMessage>?) {
         val dateComparator = SortableMessageDateComparator()
+        val newList: MutableList<SortableMessage>?  = ArrayList()
         if (list != null) {
             Collections.sort(list, dateComparator)
+            var setUsername = true
+            for (i in 0 until list.size -1) {
+                val  actualMessage = list[i]
+                val  nextMessage = list[i+1]
+                if(actualMessage is Message && nextMessage is Message){
+                    if(setUsername){
+                        (list[i] as Message).usernameVisibility = true
+                    }
+                    if (actualMessage.user.getId() == nextMessage.user.getId()) {
+                        //If send same person, hide username and icon.
+                        (list[i] as Message).iconVisibility = false
+                        setUsername = false
+                    }else{
+                        setUsername = true
+
+                    }
+                }
+            }
         }
     }
 

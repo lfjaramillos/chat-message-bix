@@ -127,11 +127,12 @@ class MessageAdapter(context: Context, resource: Int, private val objects: List<
             lateinit var messageViewHolder: MessageViewHolder
             val message: Message = item as Message
             if (position > 0) {
-                getItem(position - 1).let {
+                getItem(position -1).let {
                     if (it is Message && it.user.getId() == message.user.getId()) {
                         //If send same person, hide username and icon.
                         it.iconVisibility = false
-                        message.usernameVisibility = false
+
+
                     }
                 }
             }
